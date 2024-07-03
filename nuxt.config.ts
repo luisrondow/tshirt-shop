@@ -8,7 +8,8 @@ export default defineNuxtConfig({
       '@nuxtjs/google-fonts',
       {
         families: {
-          Wittgenstein: true,
+          Poppins: true,
+          Lora: true,
         },
       },
     ],

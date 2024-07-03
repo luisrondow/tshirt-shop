@@ -2,8 +2,11 @@
 export default {
   content: [],
   theme: {
+    fontFamily: {
+      'sans': ['"Poppins"', 'sans'],
+      'serif': ['"Lora"', 'serif'],
+    },
     extend: {},
   },
   plugins: [],
 }
-

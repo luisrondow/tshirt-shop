@@ -11,7 +11,7 @@ useHead({
 </script>
 
 <template>
-  <div class="leading-tight text-gray-900 antialiased">
+  <div class="font-sans leading-tight text-black antialiased">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
