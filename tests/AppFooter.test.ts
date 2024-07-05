@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-import XButton from '../global/XButton.vue'
+import { AppFooter } from '#build/components'
 
-describe('XButton component', () => {
+describe('AppFooter component', () => {
   it('is a Vue instance', () => {
-    const wrapper = mount(XButton)
+    const wrapper = mount(AppFooter)
     expect(wrapper.vm).toBeTruthy()
   })
 })

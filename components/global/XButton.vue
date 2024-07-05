@@ -3,7 +3,7 @@ type Variant = 'primary' | 'secondary'
 </script>
 
 <script setup lang="ts">
-import { defineProps, type PropType } from 'vue'
+import { type PropType } from 'vue'
 
 const props = defineProps({
   onClick: {

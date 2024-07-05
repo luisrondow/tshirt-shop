@@ -6,9 +6,11 @@ const basketQuantity = computed(() => basketStore.count)
 
 <template>
   <header class="flex w-full items-center justify-between px-6 py-4">
-    <NuxtLink to="/" class="uppercase">Shop</NuxtLink>
-    <h1 class="font-serif text-4xl font-semibold">T-Shirt Shop</h1>
-    <NuxtLink to="/basket" class="flex cursor-pointer items-center gap-2">
+    <XLink to="/" class="w-full uppercase">Shop</XLink>
+    <XLink to="/" class="flex w-full justify-center !no-underline">
+      <h1 class="font-serif text-4xl font-semibold">T-Shirt Shop</h1>
+    </XLink>
+    <XLink to="/basket" class="flex w-full cursor-pointer items-center justify-end gap-2">
       <span class="uppercase text-black hover:underline">Basket</span>
       <div
         class="flex h-6 w-6 items-center justify-center rounded-full text-white"
@@ -16,6 +18,6 @@ const basketQuantity = computed(() => basketStore.count)
       >
         {{ basketQuantity }}
       </div>
-    </NuxtLink>
+    </XLink>
   </header>
 </template>
