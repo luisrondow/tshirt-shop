@@ -7,7 +7,7 @@ const basketCount = ref(0)
     <NuxtLink to="/" class="uppercase">Shop</NuxtLink>
     <h1 class="font-serif text-4xl font-semibold">T-Shirt Shop</h1>
     <NuxtLink to="/basket" class="flex cursor-pointer gap-2">
-      <XButton variant="text" :on-click="() => console.log('clicked')">Basket</XButton>
+      <span class="uppercase text-black hover:underline">Basket</span>
       <div class="flex h-6 w-6 items-center justify-center rounded-full bg-black text-white">
         {{ basketCount }}
       </div>
