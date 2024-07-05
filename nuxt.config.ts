@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxt/test-utils/module',
+    '@pinia/nuxt',
     [
       '@nuxtjs/google-fonts',
       {
@@ -14,4 +15,7 @@ export default defineNuxtConfig({
       },
     ],
   ],
+  alias: {
+    pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs',
+  },
 })

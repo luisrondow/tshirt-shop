@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-import AppFooter from '#build/components'
+import { ProductGrid } from '#build/components'
 
-describe('AppFooter component', () => {
+describe('ProductGrid component', () => {
   it('is a Vue instance', () => {
-    const wrapper = mount(AppFooter)
+    const wrapper = mount(ProductGrid)
     expect(wrapper.vm).toBeTruthy()
   })
 })

@@ -13,6 +13,8 @@ defineProps({
     required: true,
   },
 })
+
+const emit = defineEmits(['add-to-basket'])
 </script>
 
 <template>
@@ -22,6 +24,6 @@ defineProps({
       <h1 class="font-serif text-2xl font-semibold">{{ name }}</h1>
       <p class="font-mono text-xl font-semibold">${{ price }}</p>
     </div>
-    <XButton variant="primary" :on-click="() => console.log('clicked')"> Add to basket </XButton>
+    <XButton variant="primary" :on-click="() => emit('add-to-basket')"> Add to basket </XButton>
   </div>
 </template>

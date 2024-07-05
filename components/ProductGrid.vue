@@ -7,6 +7,8 @@ defineProps({
     required: true,
   },
 })
+
+const basketStore = useBasket()
 </script>
 
 <template>
@@ -17,6 +19,7 @@ defineProps({
       :name="product.name"
       :image="product.image"
       :price="product.price"
+      @add-to-basket="() => basketStore.addToBasket(product)"
     />
   </div>
 </template>
