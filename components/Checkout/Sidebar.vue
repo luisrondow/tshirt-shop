@@ -67,12 +67,14 @@ const handleSubmit = () => {
 
   stepper.goToNext()
 }
+
+const emit = defineEmits(['close-sidebar'])
 </script>
 
 <template>
-  <div class="flex w-3/5 flex-col bg-gray-300 p-4">
+  <div class="flex min-h-[calc(100vh-6.5rem)] w-full flex-col gap-16 bg-gray-300 p-4 md:min-h-0 md:w-3/5">
     <h3 class="font-serif text-3xl font-semibold">Checkout</h3>
-    <div class="mt-16 flex h-full flex-col gap-16">
+    <div class="flex h-full flex-col gap-16">
       <div v-if="stepper.isCurrent('shipping-methods')" class="flex flex-col gap-8">
         <div v-if="props.isLoading" class="flex w-full items-center justify-center">
           <XLoading />
@@ -122,6 +124,9 @@ const handleSubmit = () => {
       <XButton variant="primary" :on-click="handleSubmit" :disabled="!isCurrentShippingMethodValid">{{
         stepper.isLast.value ? 'Pay' : 'Next'
       }}</XButton>
+    </div>
+    <div class="w-full bg-transparent text-center text-black underline md:hidden" @click="() => emit('close-sidebar')">
+      Back to basket
     </div>
   </div>
 </template>

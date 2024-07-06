@@ -77,7 +77,7 @@ const handleRemoveFromBasket = () => {
         <h2 class="font-serif text-3xl">{{ name }}</h2>
         <span class="text-xl">{{ formattedPrice }}</span>
       </div>
-      <div class="flex items-end gap-6">
+      <div class="flex flex-col items-end gap-6 md:flex-row">
         <div>
           <p class="mb-4">Quantity:</p>
           <XDropdown v-model="quantity" :items="quantityOptions" @update:model-value="handleUpdateQuantity" />

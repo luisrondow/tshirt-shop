@@ -17,7 +17,7 @@ const isLoading = computed(() => status.value === 'pending')
 </script>
 
 <template>
-  <div class="min-h-[calc(100vh-7.5rem)] max-w-[1920px] border border-t-gray-300 px-8 py-4">
+  <div class="min-h-[calc(100vh-7.5rem)] max-w-[1920px] border border-t-gray-300 px-4 py-4 md:px-8">
     <div v-if="isLoading" class="flex w-full items-center justify-center">
       <XLoading />
     </div>
