@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { formatCurrency } from '~/utils/currency'
-
 const { itemsInBasket } = useBasket()
 const { products } = useProducts()
 
@@ -15,19 +13,21 @@ const basketProducts = computed(() => {
   })
 })
 
+const isBasketEmpty = computed(() => {
+  return basketProducts.value.length === 0
+})
+
 const totalPrice = computed(() => {
-  return formatCurrency(
-    basketProducts.value.reduce((acc, product) => {
-      return acc + (product.price || 0) * product.quantity
-    }, 0),
-  )
+  return basketProducts.value.reduce((acc, product) => {
+    return acc + (product.price || 0) * product.quantity
+  }, 0)
 })
 </script>
 
 <template>
-  <div class="min-h-[calc(100vh-7.5rem)] border border-t-gray-300 px-6 py-12">
-    <div class="flex w-full flex-col items-center justify-center gap-8">
-      <span v-if="basketProducts.length === 0" class="text-center">Your basket is empty</span>
+  <div class="flex min-h-[calc(100vh-7.5rem)] border border-t-gray-300">
+    <div class="mt-16 flex w-full flex-col items-center gap-8 px-6">
+      <span v-if="isBasketEmpty" class="text-center">Your basket is empty</span>
       <template v-else>
         <BasketItem
           v-for="product in basketProducts"
@@ -37,8 +37,8 @@ const totalPrice = computed(() => {
           :price="product.price || 0"
           :quantity="product.quantity || 0"
         />
-        <span class="mt-8 text-xl font-bold">Total: {{ totalPrice }}</span>
       </template>
     </div>
+    <CheckoutSidebar v-if="!isBasketEmpty" :total-price="totalPrice" />
   </div>
 </template>
