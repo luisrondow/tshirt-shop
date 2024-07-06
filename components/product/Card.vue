@@ -1,5 +1,9 @@
 <script setup lang="ts">
-defineProps({
+const props = defineProps({
+  id: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: true,
@@ -15,6 +19,12 @@ defineProps({
 })
 
 const emit = defineEmits(['add-to-basket'])
+
+const store = useBasket()
+
+const { itemsInBasket } = storeToRefs(store)
+
+const isInBasket = computed(() => itemsInBasket.value[props.id] !== undefined)
 </script>
 
 <template>
@@ -24,6 +34,9 @@ const emit = defineEmits(['add-to-basket'])
       <h1 class="font-serif text-2xl font-semibold">{{ name }}</h1>
       <p class="font-mono text-xl font-semibold">${{ price }}</p>
     </div>
-    <XButton variant="primary" :on-click="() => emit('add-to-basket')"> Add to basket </XButton>
+    <XButton v-if="!isInBasket" variant="primary" :on-click="() => emit('add-to-basket')"> Add to basket </XButton>
+    <XLink v-else to="/basket">
+      <XButton variant="secondary"> View in Basket ></XButton>
+    </XLink>
   </div>
 </template>

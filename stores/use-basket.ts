@@ -15,6 +15,31 @@ export const useBasket = defineStore('basket', () => {
     itemsInBasket.value = { ...itemsInBasket.value, [product.id]: 1 }
   }
 
+  const removeFromBasket = (productId: string) => {
+    if (!Object.hasOwnProperty.call(itemsInBasket.value, productId)) {
+      return
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { [productId]: _, ...newItemsInBasket } = itemsInBasket.value
+
+    itemsInBasket.value = newItemsInBasket
+  }
+
+  const updateProductQuantity = (productId: string, newQuantity: number) => {
+    if (newQuantity <= 0) {
+      removeFromBasket(productId)
+
+      return
+    }
+
+    itemsInBasket.value = { ...itemsInBasket.value, [productId]: newQuantity }
+  }
+
+  const clearBasket = () => {
+    itemsInBasket.value = {}
+  }
+
   return {
     // state
     itemsInBasket,
@@ -22,5 +47,8 @@ export const useBasket = defineStore('basket', () => {
     count,
     // actions
     addToBasket,
+    removeFromBasket,
+    updateProductQuantity,
+    clearBasket,
   }
 })

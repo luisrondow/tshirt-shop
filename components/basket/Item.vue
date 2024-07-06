@@ -2,6 +2,10 @@
 import { formatCurrency } from '~/utils/currency'
 
 const props = defineProps({
+  id: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: true,
@@ -14,15 +18,55 @@ const props = defineProps({
     type: Number,
     required: true,
   },
-  quantity: {
+  stock: {
     type: Number,
     required: true,
   },
 })
 
+const { updateStock } = useProducts()
+const { itemsInBasket, removeFromBasket, updateProductQuantity } = useBasket()
+
+const { data, refresh } = useFetch<{ stock: number }>(`/api/stock/${props.id}`, {
+  immediate: false,
+})
+
+const quantity = ref(itemsInBasket[props.id] || 1)
+
 const formattedPrice = computed(() => {
   return formatCurrency(props.price)
 })
+
+const quantityOptions = computed(() => {
+  return Array.from({ length: props.stock }, (_, i) => ({
+    label: String(i + 1),
+    value: i + 1,
+  }))
+})
+
+const handleUpdateQuantity = async (value: number) => {
+  if (value === quantity.value) return
+
+  await refresh()
+
+  if (data.value?.stock !== undefined && data.value.stock !== null) {
+    if (value > data.value.stock) {
+      alert(
+        'Sorry, the quantity you selected is no longer available. The stock has been updated. Please select a new quantity.',
+      )
+      updateProductQuantity(props.id, data.value.stock)
+
+      return
+    }
+
+    updateStock(props.id, data.value.stock)
+    updateProductQuantity(props.id, value)
+  }
+}
+
+const handleRemoveFromBasket = () => {
+  removeFromBasket(props.id)
+}
 </script>
 
 <template>
@@ -33,7 +77,13 @@ const formattedPrice = computed(() => {
         <h2 class="font-serif text-3xl">{{ name }}</h2>
         <span class="text-xl">{{ formattedPrice }}</span>
       </div>
-      <p>Quantity: {{ quantity }}</p>
+      <div class="flex items-end gap-6">
+        <div>
+          <p class="mb-4">Quantity:</p>
+          <XDropdown v-model="quantity" :items="quantityOptions" @update:model-value="handleUpdateQuantity" />
+        </div>
+        <XButton class="h-auto" variant="secondary" @click="handleRemoveFromBasket">Remove</XButton>
+      </div>
     </div>
   </div>
 </template>

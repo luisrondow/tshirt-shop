@@ -8,7 +8,7 @@ import { type PropType } from 'vue'
 const props = defineProps({
   onClick: {
     type: Function,
-    required: true,
+    default: () => {},
   },
   variant: {
     type: String as PropType<Variant>,
@@ -30,7 +30,7 @@ const theme = classes[props.variant]
 
 <template>
   <button
-    class="w-100 uppercase"
+    class="h-10 w-full uppercase"
     :class="{
       [theme]: true,
       'hover:bg-white hover:text-black': props.variant === 'primary' && !props.disabled,

@@ -18,6 +18,10 @@ const props = defineProps({
   },
 })
 
+const { clearBasket } = useBasket()
+
+const router = useRouter()
+
 const checkoutInformation = reactive({
   shippingMethod: props.shippingMethods[0].id,
   email: '',
@@ -55,6 +59,8 @@ const handleUpdateShippingMethod = (id: string) => {
 const handleSubmit = () => {
   if (stepper.isLast.value) {
     alert('Payment successful')
+    clearBasket()
+    router.push('/')
 
     return
   }

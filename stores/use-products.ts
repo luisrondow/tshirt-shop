@@ -5,8 +5,21 @@ export const useProducts = defineStore('products', () => {
     products.value = newProducts
   }
 
+  const updateStock = (productId: string, newStock: number) => {
+    const product = products.value.find((product) => product.id === productId)
+
+    if (!product) {
+      return
+    }
+
+    product.stock = newStock
+  }
+
   return {
+    // state
     products,
+    // actions
     setProducts,
+    updateStock,
   }
 })

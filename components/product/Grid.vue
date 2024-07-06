@@ -10,6 +10,7 @@ const products = computed(() => store.products)
   <div class="grid grid-cols-2 gap-x-2 gap-y-4 md:grid-cols-4 lg:gap-x-4 lg:gap-y-8">
     <ProductCard
       v-for="product in products"
+      :id="product.id"
       :key="product.id"
       :name="product.name"
       :image="product.image"
