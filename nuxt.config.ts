@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxt/test-utils/module',
     '@pinia/nuxt',
+    '@crazydos/nuxt-msw',
     [
       '@nuxtjs/google-fonts',
       {

@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { itemsInBasket } = useBasket()
+import type { ShippingMethods } from '~/utils/types'
+
+const { itemsInBasket, count } = useBasket()
 const { products } = useProducts()
 
 const basketProducts = computed(() => {
@@ -22,6 +24,13 @@ const totalPrice = computed(() => {
     return acc + (product.price || 0) * product.quantity
   }, 0)
 })
+
+const { data, status } = await useFetch<ShippingMethods[]>(`/api/shipping-methods?quantity=${count}`, {
+  immediate: count > 0,
+})
+
+const shippingMethods = computed(() => data.value || [])
+const isShippingMethodsLoading = computed(() => status.value === 'pending')
 </script>
 
 <template>
@@ -39,6 +48,11 @@ const totalPrice = computed(() => {
         />
       </template>
     </div>
-    <CheckoutSidebar v-if="!isBasketEmpty" :total-price="totalPrice" />
+    <CheckoutSidebar
+      v-if="!isBasketEmpty"
+      :sub-total="totalPrice"
+      :shipping-methods="shippingMethods"
+      :is-loading="isShippingMethodsLoading"
+    />
   </div>
 </template>

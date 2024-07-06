@@ -5,3 +5,9 @@ export type Product = {
   price: number
   stock: number
 }
+
+export type ShippingMethods = {
+  id: string
+  name: string
+  price: number
+}

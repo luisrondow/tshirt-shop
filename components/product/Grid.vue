@@ -1,14 +1,9 @@
 <script setup lang="ts">
-import type { Product } from '~/utils/types'
-
-defineProps({
-  products: {
-    type: Array as PropType<Product[]>,
-    required: true,
-  },
-})
+const store = useProducts()
 
 const basketStore = useBasket()
+
+const products = computed(() => store.products)
 </script>
 
 <template>

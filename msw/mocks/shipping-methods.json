@@ -1,0 +1,37 @@
+[
+  {
+    "id": "e2a1c8b6-1e4b-4e0e-9b6f-3f8c2e3f9d5b",
+    "name": "Standard Shipping",
+    "price": 5.99,
+    "min": 0,
+    "max": null
+  },
+  {
+    "id": "b3c2d1a8-2f5b-4d1e-a6b7-1f7d2e4f8c9d",
+    "name": "Express Shipping",
+    "price": 12.99,
+    "min": 5,
+    "max": 10
+  },
+  {
+    "id": "c4d3e2b7-3a6c-4e2f-b8c9-2f8d3e5f9b1d",
+    "name": "Next-Day Shipping",
+    "price": 19.99,
+    "min": 0,
+    "max": null
+  },
+  {
+    "id": "d5e4f3c8-4b7d-4f3e-c9d0-3f9e4f6g0c2e",
+    "name": "International Shipping",
+    "price": 25.99,
+    "min": 0,
+    "max": 15
+  },
+  {
+    "id": "e6f5g4d9-5c8e-4g4f-d0e1-4g0f5h7i1d3f",
+    "name": "Economy Shipping",
+    "price": 3.99,
+    "min": 0,
+    "max": 5
+  }
+]

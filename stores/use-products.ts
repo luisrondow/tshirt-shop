@@ -1,54 +1,12 @@
-const MOCK = [
-  {
-    id: '4f90d13a-42f8-4e7f-bacd-8b1c9c6c8df7',
-    name: 'TShirt 1',
-    image:
-      'https://img.sonofatailor.com/images/customizer/product/White_O_Crew_Regular_NoPocket-dd223275-e170-4705-afcd-56cb12b45351.jpg',
-    price: 20,
-    stock: 20,
-  },
-  {
-    id: 'a7d8d9f6-eded-4a0c-8b82-45f0a4a1a2b4',
-    name: 'TShirt 2',
-    image:
-      'https://img.sonofatailor.com/images/customizer/product/White_O_Crew_Regular_NoPocket-dd223275-e170-4705-afcd-56cb12b45351.jpg',
-    price: 25,
-    stock: 20,
-  },
-  {
-    id: 'c3d2e1f0-2606-4f91-8bff-4156c35a1d97',
-    name: 'TShirt 3',
-    image:
-      'https://img.sonofatailor.com/images/customizer/product/White_O_Crew_Regular_NoPocket-dd223275-e170-4705-afcd-56cb12b45351.jpg',
-    price: 30,
-    stock: 20,
-  },
-  {
-    id: 'd4e5f6a7-b8c9-4d0e-9a2b-3c4d5e6f7g8h',
-    name: 'TShirt 4',
-    image:
-      'https://img.sonofatailor.com/images/customizer/product/White_O_Crew_Regular_NoPocket-dd223275-e170-4705-afcd-56cb12b45351.jpg',
-    price: 35,
-    stock: 20,
-  },
-  {
-    id: 'e5f6a7b8-c9d0-e1f2-a3b4-c5d6e7f8g9h0',
-    name: 'TShirt 5',
-    image:
-      'https://img.sonofatailor.com/images/customizer/product/White_O_Crew_Regular_NoPocket-dd223275-e170-4705-afcd-56cb12b45351.jpg',
-    price: 40,
-    stock: 20,
-  },
-]
-
 export const useProducts = defineStore('products', () => {
   const products = ref<Product[]>([])
 
-  onMounted(async () => {
-    products.value = MOCK
-  })
+  const setProducts = (newProducts: Product[]) => {
+    products.value = newProducts
+  }
 
   return {
     products,
+    setProducts,
   }
 })
