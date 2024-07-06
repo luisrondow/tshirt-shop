@@ -25,13 +25,15 @@ const props = defineProps({
 })
 
 const { updateStock } = useProducts()
-const { itemsInBasket, removeFromBasket, updateProductQuantity } = useBasket()
+const basketStore = useBasket()
+
+const { itemsInBasket } = storeToRefs(basketStore)
 
 const { data, refresh } = useFetch<{ stock: number }>(`/api/stock/${props.id}`, {
   immediate: false,
 })
 
-const quantity = ref(itemsInBasket[props.id] || 1)
+const quantity = computed(() => itemsInBasket.value[props.id] || 1)
 
 const formattedPrice = computed(() => {
   return formatCurrency(props.price)
@@ -54,18 +56,18 @@ const handleUpdateQuantity = async (value: number) => {
       alert(
         'Sorry, the quantity you selected is no longer available. The stock has been updated. Please select a new quantity.',
       )
-      updateProductQuantity(props.id, data.value.stock)
+      basketStore.updateProductQuantity(props.id, data.value.stock)
 
       return
     }
 
     updateStock(props.id, data.value.stock)
-    updateProductQuantity(props.id, value)
+    basketStore.updateProductQuantity(props.id, value)
   }
 }
 
 const handleRemoveFromBasket = () => {
-  removeFromBasket(props.id)
+  basketStore.removeFromBasket(props.id)
 }
 </script>
 
