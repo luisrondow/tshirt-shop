@@ -29,7 +29,7 @@ const isInBasket = computed(() => itemsInBasket.value[props.id] !== undefined)
 
 <template>
   <div class="flex flex-col">
-    <img :src="image" alt="product" class="h-auto w-full object-cover" />
+    <img :src="image" alt="product" class="h-auto w-full object-cover" loading="lazy" />
     <div class="flex items-center justify-between py-4">
       <h1 class="font-serif text-2xl font-semibold">{{ name }}</h1>
       <p class="font-mono text-xl font-semibold">€{{ price }}</p>

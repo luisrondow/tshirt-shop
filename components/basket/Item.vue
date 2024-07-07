@@ -73,7 +73,7 @@ const handleRemoveFromBasket = () => {
 
 <template>
   <div class="flex w-full gap-4">
-    <img class="h-48 w-32" :src="image" :alt="`${name} photo`" />
+    <img class="h-48 w-32" :src="image" :alt="`${name} photo`" loading="lazy" />
     <div class="flex w-full items-center justify-between">
       <div class="flex flex-col justify-between gap-24">
         <h2 class="font-serif text-3xl">{{ name }}</h2>
