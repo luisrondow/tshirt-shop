@@ -1,0 +1,8 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`XLink component > should render correctly 1`] = `
+<span>
+  
+  
+</span>
+`;

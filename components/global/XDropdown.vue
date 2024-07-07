@@ -30,6 +30,7 @@ const handleUpdateModelValue = (value: string | number) => {
 <template>
   <div class="dropdown relative">
     <div
+      data-testid="dropdown-select"
       class="flex h-10 min-w-24 cursor-pointer items-center rounded border border-gray-200 bg-white p-3"
       @click="show = !show"
     >
@@ -46,6 +47,7 @@ const handleUpdateModelValue = (value: string | number) => {
     </div>
     <div
       v-if="show"
+      data-testid="dropdown-options"
       class="absolute z-10 mt-1 max-h-64 w-full flex-col overflow-auto rounded border border-gray-200 bg-white shadow peer-checked:flex"
     >
       <button

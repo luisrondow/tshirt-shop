@@ -32,7 +32,7 @@ const isInBasket = computed(() => itemsInBasket.value[props.id] !== undefined)
     <img :src="image" alt="product" class="h-auto w-full object-cover" />
     <div class="flex items-center justify-between py-4">
       <h1 class="font-serif text-2xl font-semibold">{{ name }}</h1>
-      <p class="font-mono text-xl font-semibold">${{ price }}</p>
+      <p class="font-mono text-xl font-semibold">€{{ price }}</p>
     </div>
     <XButton v-if="!isInBasket" variant="primary" :on-click="() => emit('add-to-basket')"> Add to basket </XButton>
     <XLink v-else to="/basket">

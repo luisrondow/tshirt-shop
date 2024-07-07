@@ -96,13 +96,15 @@ const emit = defineEmits(['close-sidebar'])
           <div>
             <div class="text-md grid grid-cols-2">
               <span>Products: </span>
-              <span class="justify-self-end">{{ formatCurrency(subTotal) }}</span>
+              <span data-testid="sub-total" class="justify-self-end">{{ formatCurrency(subTotal) }}</span>
               <span>Shipping: </span>
-              <span class="justify-self-end">{{ formatCurrency(selectedShippingMethod?.price || 0) }}</span>
+              <span data-testid="shipping-price" class="justify-self-end">{{
+                formatCurrency(selectedShippingMethod?.price || 0)
+              }}</span>
             </div>
             <div class="flex justify-between pt-4 text-xl">
               <span>Total Price:</span>
-              <span>{{ formatCurrency(finalBasketPrice) }}</span>
+              <span data-testid="total-price">{{ formatCurrency(finalBasketPrice) }}</span>
             </div>
           </div>
         </template>

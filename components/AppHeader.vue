@@ -13,6 +13,7 @@ const basketQuantity = computed(() => basketStore.count)
     <XLink to="/basket" class="flex w-full cursor-pointer items-center justify-end gap-2">
       <span class="uppercase text-black hover:underline">Basket</span>
       <div
+        data-testid="basket-count"
         class="flex h-6 w-6 items-center justify-center rounded-full text-white"
         :class="basketQuantity > 0 ? 'bg-emerald-900' : 'bg-black'"
       >

@@ -31,6 +31,7 @@ const theme = classes[props.variant]
 <template>
   <button
     class="h-10 w-full uppercase"
+    :disabled="props.disabled"
     :class="{
       [theme]: true,
       'hover:bg-white hover:text-black': props.variant === 'primary' && !props.disabled,

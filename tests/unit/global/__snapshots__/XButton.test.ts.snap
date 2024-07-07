@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`XButton component > should render correctly 1`] = `
+<button
+  class="h-10 w-full uppercase border border-black bg-black px-4 py-2 text-white  hover:bg-white hover:text-black"
+>
+  
+  
+</button>
+`;

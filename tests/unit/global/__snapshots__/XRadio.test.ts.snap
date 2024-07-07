@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`XRadio component > should render correctly 1`] = `
+<div
+  class="mb-4 flex items-center"
+>
+  <input
+    class="h-4 w-4 border-gray-300 bg-gray-100 text-black"
+    id=""
+    name=""
+    type="radio"
+    value=""
+  />
+  <label
+    class="ms-2 text-lg font-medium text-gray-900"
+    for=""
+  />
+</div>
+`;
