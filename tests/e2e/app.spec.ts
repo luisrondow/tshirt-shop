@@ -91,3 +91,32 @@ test('should trigger price change when selecting a different shipping option and
 
   await expect(page.getByTestId('total-price')).toContainText('€59.99')
 })
+
+test.describe('mobile', () => {
+  test.use({ viewport: { width: 390, height: 844 } })
+
+  test('should complete a purchase correctly', async ({ page, goto }) => {
+    await goto('/', { waitUntil: 'hydration' })
+    await page.getByRole('button', { name: 'Add to basket' }).first().click()
+    await page.getByRole('button', { name: 'View in Basket >' }).click()
+    await page.getByText('Go to checkout').click()
+
+    await expect(page.getByRole('heading', { name: 'Checkout' })).toBeVisible()
+    await expect(page.getByTestId('sub-total')).toContainText('€20.00')
+    await expect(page.getByTestId('shipping-price')).toContainText('€5.99')
+    await expect(page.getByTestId('total-price')).toContainText('€25.99')
+
+    await page.getByRole('button', { name: 'Next' }).click()
+    await expect(page.getByText('Please enter a valid email')).toBeVisible()
+
+    await page.getByPlaceholder('Enter your email').fill('teste@email.com')
+    page.once('dialog', (dialog) => {
+      console.log(`Dialog message: ${dialog.message()}`)
+      dialog.dismiss().catch(() => {})
+    })
+    await page.getByRole('button', { name: 'Pay' }).click()
+
+    await expect(page).not.toHaveURL(/\/basket/)
+    await expect(page.getByTestId('basket-count')).toContainText('0')
+  })
+})
